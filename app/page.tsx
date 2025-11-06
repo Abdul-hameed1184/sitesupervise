@@ -261,14 +261,12 @@ function Hero() {
 
 /* ------------------------------ Feature Card ------------------------------- */
 
-type IconType = (props: React.ComponentProps<"svg">) => JSX.Element;
-
 function FeatureCard({
   image,
   title,
   desc,
 }: {
-  Icon: IconType;
+  image: string;
   title: string;
   desc: string;
 }) {
