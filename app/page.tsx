@@ -2,11 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 // import {logo_group} from "@/components/index.js"
 
 const CTA_BUTTON =
@@ -18,10 +14,36 @@ const SOLID = "bg-slate-900 text-white hover:bg-black transition";
 export default function Page() {
   return (
     <main className="font-sans antialiased">
+      <div className="h-[2rem] bg-[#022C4F] z-20"></div>
+      <div className="py-8 pb-15 px-3 md:px-[6rem] flex items-center gap-3 relative">
+        <div className="w-20 h-20 flex items-center justify-center">
+          <Image
+            src="/images/logo.png"
+            alt="Site Supervise Logo"
+            width={80}
+            height={80}
+            className="object-contain"
+          />
+        </div>
+        <span className="font-extrabold text-xl lg:text-4xl text-[#022C4F] tracking-wide ">
+          SITE SUPERVISE
+        </span>
+        {/* Mobile Menu Toggle beside logo */}
+        <div className="md:hidden ml-auto relative">
+          <MobileMenuButton />
+        </div>
+        {/* Blue rectangle on right side */}
+          <div className="hidden md:block absolute -right-20 top-30 -translate-y-1/2 w-[50rem] h-[50rem] bg-[#001220] rotate-45 opacity-80 "></div>
+      </div>
+      <div className="m-0  lg:mr-[9rem]">
+
+        <div className="w-full flex justify-center align-center ">
+
       <Navbar />
+        </div>
 
-      <Hero />
-
+        <Hero />
+      </div>
       <section className="max-w-7xl mx-auto px-6 py-16">
         <div className="flex flex-col gap-12">
           <div className="flex justify-between w-full">
@@ -88,29 +110,77 @@ export default function Page() {
 
 /* --------------------------------- Navbar --------------------------------- */
 
-function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
+function MobileMenuButton() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
- <header className="bg-[#001b33] text-white shadow-md fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-7 flex items-center justify-between">
-        {/* Logo Section */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 flex items-center justify-center">
-            <Image
-              src="/images/logo.png"
-              alt="Site Supervise Logo"
-              width={40}
-              height={40}
-              className="object-contain"
-            />
-          </div>
-          <span className="font-bold text-lg tracking-wide">
-            SITE SUPERVISE
-          </span>
-        </div>
+    <>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle menu"
+        className="p-2 rounded bg-[#001b33] text-white hover:bg-[#002244] transition-all"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="feather feather-menu"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+      
+      {/* Mobile Dropdown Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 z-50"
+          >
+            <nav className="flex flex-col py-2">
+              <a href="#" className="px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#001b33] transition-colors">
+                Home
+              </a>
+              <a href="#" className="px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#001b33] transition-colors">
+                Features
+              </a>
+              <a href="#" className="px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#001b33] transition-colors">
+                Solutions
+              </a>
+              <a href="#" className="px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#001b33] transition-colors">
+                Resources
+              </a>
+              <a href="#" className="px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#001b33] transition-colors">
+                Contact
+              </a>
+              <div className="border-t border-gray-200 mt-2 pt-2">
+                <button className="mx-4 mb-2 w-[calc(100%-2rem)] bg-[#001b33] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-[#002244] transition-all">
+                  LOGIN / SIGN UP
+                </button>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
 
+function Navbar() {
+  return (
+    <header className="bg-[#001b33] text-white shadow-md w-7xl absolute z-20 -mt-10 hidden md:block">
+      <div className="max-w-7xl mx-auto px-6 py-7 flex items-center justify-between h-full">
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="flex items-center gap-8">
           <a href="#" className="text-sm hover:text-sky-400 transition-colors">
             Home
           </a>
@@ -128,73 +198,13 @@ function Navbar() {
           </a>
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:flex">
-          <button className="bg-white text-slate-900 px-5 py-2 text-sm font-semibold rounded hover:bg-slate-200 transition-all">
+        {/* Desktop CTA - Full height */}
+        <div className="flex h-full">
+          <button className="bg-white text-slate-900 px-5 h-full text-sm font-semibold rounded hover:bg-slate-200 transition-all">
             LOGIN / SIGN UP
           </button>
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-            className="p-2 rounded bg-white/10 hover:bg-white/20 transition-all"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="22"
-              height="22"
-              fill="none"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-menu"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
-        </div>
       </div>
-
-      {/* Mobile Dropdown Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#00264d] border-t border-white/10"
-          >
-            <nav className="flex flex-col space-y-3 px-6 py-4 text-sm">
-              <a href="#" className="hover:text-sky-400">
-                Home
-              </a>
-              <a href="#" className="hover:text-sky-400">
-                Features
-              </a>
-              <a href="#" className="hover:text-sky-400">
-                Solutions
-              </a>
-              <a href="#" className="hover:text-sky-400">
-                Resources
-              </a>
-              <a href="#" className="hover:text-sky-400">
-                Contact
-              </a>
-
-              <button className="mt-3 bg-white text-slate-900 px-4 py-2 rounded text-sm font-semibold hover:bg-slate-200 transition-all">
-                LOGIN / SIGN UP
-              </button>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 }
@@ -204,58 +214,61 @@ function Navbar() {
 function Hero() {
   return (
     <section className="relative bg-white overflow-hidden">
-  <div
-    className="relative min-h-screen lg:h-[90vh] flex items-center bg-center bg-no-repeat bg-cover"
-    style={{
-      backgroundImage: "url(/images/bg-hero.png)",
-    }}
-  >
-    {/* Angled dark overlay */}
-    <div className="absolute inset-0 z-0 overflow-hidden">
-      <div className="absolute inset-0 -skew-x-12 origin-top-left">
-        <div className="bg-gradient-to-r from-[#001b33]/95 to-transparent w-full h-full" />
-      </div>
-    </div>
-
-    {/* Content */}
-    <div className="relative z-10 w-full  mx-auto px-6 md:px-10 py-20 lg:py-28">
-      <div className="grid lg:grid-cols-2 items-center gap-10">
-        {/* Left Content */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center lg:text-left"
-        >
-            <p className="text-xl text-white font-bold">
-            Manage, Monitor and
-              </p> 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white drop-shadow-sm">
-              Optimize
-              Every Construction
-            Project From One Dashboard
-          </h1>
-
-          <p className="mt-6 text-slate-200 text-base md:text-lg max-w-xl leading-relaxed mx-auto lg:mx-0">
-            A complete web solution for project control, staff management,
-            material tracking, and performance analytics — all designed to
-            simplify your construction operations.
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
-            <button className={`bg-black text-white px-20 py-5 rounded-md text-lg`}>
-              Get Started
-            </button>
-            <button className={`hover:bg-black border border-black text-white px-20 py-5 rounded-md text-lg`}>
-              Request a Demo
-            </button>
+      {/* <Navbar/> */}
+      <div
+        className="relative min-h-screen lg:h-[90vh] flex items-center bg-center bg-no-repeat bg-cover"
+        style={{
+          backgroundImage: "url(/images/bg-hero.png)",
+        }}
+      >
+        {/* Angled dark overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-0 -skew-x-12 origin-top-left">
+            <div className="bg-gradient-to-r from-[#001b33]/95 to-transparent w-full h-full" />
           </div>
-        </motion.div>
-      </div>
-    </div>
-  </div>
-</section>
 
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 w-full  mx-auto px-6 md:px-10 py-20 lg:py-28">
+          <div className="grid lg:grid-cols-2 items-center gap-10">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center lg:text-left"
+            >
+              <p className="text-xl text-white font-bold">
+                Manage, Monitor and
+              </p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white drop-shadow-sm">
+                Optimize Every Construction Project From One Dashboard
+              </h1>
+
+              <p className="mt-6 text-slate-200 text-base md:text-lg max-w-xl leading-relaxed mx-auto lg:mx-0">
+                A complete web solution for project control, staff management,
+                material tracking, and performance analytics — all designed to
+                simplify your construction operations.
+              </p>
+
+              <div className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
+                <button
+                  className={`bg-black text-white px-20 py-5 rounded-md text-lg`}
+                >
+                  Get Started
+                </button>
+                <button
+                  className={`hover:bg-black border border-black text-white px-20 py-5 rounded-md text-lg`}
+                >
+                  Request a Demo
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -382,7 +395,6 @@ function Projects() {
 
         <div>
           <h3 className="text-3xl font-extrabold mb-4">
-            
             <i> Your Projects at a Glance</i>
           </h3>
           <p className="text-slate-300 max-w-md mb-6">
@@ -440,19 +452,23 @@ function Contact() {
               </div>
 
               <div>
-                <button className={` py-4 bg-[#022C4F] w-full text-center `}>SEND</button>
+                <button className={` py-4 bg-[#022C4F] w-full text-center `}>
+                  SEND
+                </button>
               </div>
             </form>
           </div>
-          <div 
-            className="flex-1 flex justify-center items-center w-full"
+          <div
+            className="flex-1 flex justify-center items-center w-full relative"
             style={{
-              backgroundImage: 'url(/images/Rectangle 26.svg)',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
+              backgroundImage: "url(/images/Rectangle 26.svg)",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="p-8 border-l border-slate-800 h-fit w-full bg-[#022C4F]">
+              <div className="absolute right-0 top-0 w-35 h-full bg-[#D9D9D9]"></div>
+            <div className="p-8 border-l border-slate-800 h-fit w-full bg-[#022C4F] z-20">
+              {/* Small rectangle on right side */}
               <div className="mb-4">
                 <h5 className="font-semibold text-3xl">Info</h5>
               </div>
