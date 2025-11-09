@@ -7,10 +7,11 @@ export default function Page() {
   const [role, setRole] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const roles = [
-    { value: "manager", label: "Manager" },
-    { value: "engineer", label: "Engineer" },
-    { value: "worker", label: "Worker" },
+ const roles = [
+    { value: "Staff", label: "Staff" },
+    { value: "manager", label: "Project Manager" },
+    { value: "partner", label: "Partner" },
+     { value: "client", label: "Client" }
   ];
 
   return (
