@@ -211,9 +211,9 @@ function MobileMenuButton() {
                   >
                     Contact
                   </a>
-                  <button className="mt-6 bg-[#001b33] text-white px-6 py-3 rounded text-sm font-semibold hover:bg-[#002244] transition-all">
+                  <Link href="/signin" className="mt-6 bg-[#001b33] text-white px-6 py-3 rounded text-sm font-semibold hover:bg-[#002244] transition-all text-center">
                     LOGIN / SIGN UP
-                  </button>
+                  </Link>
                 </nav>
               </div>
             </motion.div>
