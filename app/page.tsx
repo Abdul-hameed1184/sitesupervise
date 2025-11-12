@@ -16,7 +16,7 @@ export default function Page() {
   return (
     <main className="font-sans antialiased overflow-hidden relative">
       {/* Top right rectangle - 45 degrees tilted, half inside screen */}
-      <div className="absolute lg:-top-90 lg:-right-30 -top-50 -right-30 w-[20rem] lg:w-[60rem] h-[30rem] lg:h-[60rem] bg-[#001b33] rotate-45 pointer-events-none -z-10"></div>
+      <div className="absolute lg:-top-90 lg:-right-30 -top-15 md:-top-50 left-80 md:-right-30 w-[20rem] lg:w-[60rem] h-[20rem] md:h-[30rem] lg:h-[60rem] bg-[#001b33] rotate-45 pointer-events-none -z-10"></div>
       <div className="h-[2rem] bg-[#022C4F] z-10"></div>
       <div className="py-8 md:pb-15 px-3 md:px-[6rem] flex items-center gap-3 relative overflow-hidden">
         <div className="w-20 h-20 flex items-center justify-center">

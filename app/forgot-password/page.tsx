@@ -30,7 +30,7 @@ export default function Page() {
               alt="Site Supervise"
               className="mx-auto mb-6 w-28 h-auto"
             />
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-4 md:text-start text-center ">
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-4  text-center">
               SITE SUPERVISE
             </h1>
           </div>
