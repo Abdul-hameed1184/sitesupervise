@@ -8,9 +8,10 @@ export default function Page() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const roles = [
-    { value: "manager", label: "Manager" },
-    { value: "engineer", label: "Engineer" },
-    { value: "worker", label: "Worker" },
+    { value: "Staff", label: "Staff" },
+    { value: "manager", label: "Project Manager" },
+    { value: "partner", label: "Partner" },
+     { value: "client", label: "Client" }
   ];
 
   return (
@@ -51,9 +52,9 @@ export default function Page() {
               alt="Site Supervise"
               className="w-16 h-16 mb-4"
             />
-            <h1 className="text-2xl text-[#022C4F] font-extrabold text-center">
-              SITE SUPERVISE
-            </h1>
+          <h1 className="text-2xl text-[#022C4F] font-extrabold text-center">
+                SITE SUPERVISE
+              </h1>
           </div>
           <div className="hidden  md:flex items-center gap-12 justify-end mb-6">
             <span className="mr-2 text-md font-medium">
