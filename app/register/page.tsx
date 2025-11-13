@@ -2,17 +2,52 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { authService, RegisterData } from "@/lib/auth";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const [role, setRole] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    fullname: "",
+    password: ""
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const roles = [
-    { value: "Staff", label: "Staff" },
-    { value: "manager", label: "Project Manager" },
-    { value: "partner", label: "Partner" },
-     { value: "client", label: "Client" }
+    { value: "STAFF", label: "Staff" },
+    { value: "PROJECT_MANAGER", label: "Project Manager" },
+    { value: "PARTNER", label: "Partner" },
+    { value: "CLIENT", label: "Client" }
   ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!role) {
+      setError("Please select a role");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const registerData: RegisterData = {
+        ...formData,
+        role: role as any
+      };
+      
+      await authService.register(registerData);
+      router.push("/signin");
+    } catch (error: any) {
+      setError(error.message || "Registration failed");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
@@ -73,21 +108,30 @@ export default function Page() {
             right tools for your role.
           </p>
 
-          <form className="space-y-7">
+          <form className="space-y-7" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Full Name"
+              value={formData.fullname}
+              onChange={(e) => setFormData({...formData, fullname: e.target.value})}
               className="w-full border border-gray-300 rounded-full px-6 py-5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
             />
             <input
               type="email"
               placeholder="Email"
+              value={formData.email}
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
               className="w-full border border-gray-300 rounded-full px-6 py-5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
             />
             <input
               type="password"
               placeholder="Password"
+              value={formData.password}
+              onChange={(e) => setFormData({...formData, password: e.target.value})}
               className="w-full border border-gray-300 rounded-full px-6 py-5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
             />
 
             <div className="relative">
@@ -159,11 +203,15 @@ export default function Page() {
               </Link>
             </div>
 
+            {error && (
+              <div className="text-red-500 text-sm text-center">{error}</div>
+            )}
             <button
               type="submit"
-              className="w-full bg-[#022C4F] text-white py-5 rounded-full mt-4  transition"
+              disabled={loading || !role}
+              className="w-full bg-[#022C4F] text-white py-5 rounded-full mt-4 transition disabled:opacity-50"
             >
-              Sign Up
+              {loading ? "Creating Account..." : "Sign Up"}
             </button>
           </form>
           <div className="md:hidden  flex items-center justify-center text-center  my-6">
