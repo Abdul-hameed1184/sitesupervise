@@ -55,7 +55,7 @@ export default function Page() {
       <div
         className="hidden md:flex flex-1 bg-cover bg-center relative items-center justify-center text-white"
         style={{
-          backgroundImage: "url('/images/site.png')",
+          backgroundImage: "url('https://res.cloudinary.com/depeqzb6z/image/upload/v1763210704/site_revqzy.png')",
         }}
       >
         <div className="absolute inset-0 bg-black/80"></div>
