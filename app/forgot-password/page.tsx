@@ -2,10 +2,29 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { authService } from "@/lib/auth";
 
 export default function Page() {
-  const [role, setRole] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setMessage("");
+
+    try {
+      const response = await authService.forgotPassword(email);
+      setMessage("Password reset email sent successfully!");
+    } catch (error: any) {
+      setError(error.message || "Failed to send reset email");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const roles = [
     { value: "manager", label: "Manager" },
@@ -53,12 +72,15 @@ export default function Page() {
           </h2>
          
 
-          <form className="space-y-7">
+          <form className="space-y-7" onSubmit={handleSubmit}>
 
             <input
               type="email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full border border-gray-300 rounded-full px-6 py-5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
             />
           
             <div className="  flex items-center justify-end mb-6">
@@ -71,11 +93,18 @@ export default function Page() {
               </Link>
             </div>
 
+            {message && (
+              <div className="text-green-500 text-sm text-center">{message}</div>
+            )}
+            {error && (
+              <div className="text-red-500 text-sm text-center">{error}</div>
+            )}
             <button
               type="submit"
-              className="w-full bg-[#022C4F] text-white py-5 rounded-full mt-4  transition"
+              disabled={loading}
+              className="w-full bg-[#022C4F] text-white py-5 rounded-full mt-4 transition disabled:opacity-50"
             >
-              Send Email
+              {loading ? "Sending..." : "Send Reset Email"}
             </button>
           </form>
           </div>
