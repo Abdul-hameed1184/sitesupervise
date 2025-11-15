@@ -7,7 +7,7 @@ import Link from "next/link";
 // import {logo_group} from "@/components/index.js"
 
 const CTA_BUTTON =
-  "px-6 py-3 rounded-md text-sm font-semibold inline-flex items-center gap-2 shadow-sm";
+  "px-6 py-3 rounded-sm text-sm font-semibold inline-flex items-center gap-2 shadow-sm";
 const OUTLINE =
   "border border-slate-700 bg-white text-slate-900 hover:bg-slate-900 hover:text-white transition";
 const SOLID = "bg-slate-900 text-white hover:bg-black transition";
@@ -16,19 +16,19 @@ export default function Page() {
   return (
     <main className="font-sans antialiased overflow-hidden relative">
       {/* Top right rectangle - 45 degrees tilted, half inside screen */}
-      <div className="absolute lg:-top-90 lg:-right-30 -top-15 md:-top-50 left-80 md:-right-30 w-[20rem] lg:w-[60rem] h-[20rem] md:h-[30rem] lg:h-[60rem] bg-[#001b33] rotate-45 pointer-events-none -z-10"></div>
+      <div className="absolute lg:-top-90 lg:-right-30 -top-15 md:-top-50 left-150 md:-right-30 w-[20rem] lg:w-[60rem] h-[20rem] md:h-[30rem] lg:h-[60rem] bg-[#001b33] rotate-45 pointer-events-none -z-10"></div>
       <div className="h-[2rem] bg-[#022C4F] z-10"></div>
       <div className="py-8 md:pb-15 px-3 md:px-[6rem] flex items-center gap-3 relative overflow-hidden">
         <div className="w-20 h-20 flex items-center justify-center">
           <Image
-            src="/images/logo.png"
+            src="https://res.cloudinary.com/depeqzb6z/image/upload/v1763210692/logo_myiwr5.png"
             alt="Site Supervise Logo"
-            width={80}
-            height={80}
+            width={60}
+            height={60}
             className="object-contain"
           />
         </div>
-        <span className="font-extrabold text-xl lg:text-4xl text-[#022C4F] tracking-wide flex flex-col md:flex-row">
+        <span className="font-extrabold text-xl mr-10 lg:text-xl text-[#022C4F] tracking-wide flex flex-col md:flex-row">
           SITE <span>SUPERVISE</span>
         </span>
         {/* Mobile Menu Toggle beside logo */}
@@ -44,18 +44,19 @@ export default function Page() {
         <Hero />
       </div>
       <section id="features" className="max-w-7xl mx-auto px-6 py-16">
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-12 ml-13">
           <div className="flex justify-center md:justify-between w-full">
             <div>
-              <img src="/images/logo-group.png" alt="" />
+              <img src="https://res.cloudinary.com/depeqzb6z/image/upload/v1763214914/Group_9_n3o2kh.png"  alt="" />
+           
 
-              <h2 className="text-xl md:text-2xl font-m   edium text-slate-900 leading-tight mb-4">
+              <h2 className="text-xl md:text-2xl font-bold mr-10 text-slate-900 leading-tight mb-4">
                 Why Choose Our Construction Dashboard?
               </h2>
             </div>
 
             <div className="hidden md:flex justify-center items-center ">
-              <button className={`${CTA_BUTTON} ${SOLID} mr-4 h-12  `}>
+              <button className={`${CTA_BUTTON} ${SOLID} mr-20 h-12  `}>
                 Get Started
               </button>
             </div>
@@ -63,32 +64,32 @@ export default function Page() {
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:gap-6 gap-2">
             <FeatureCard
-              image="/images/control-system 1.svg"
+              image="https://res.cloudinary.com/depeqzb6z/image/upload/v1763210700/control-system_1_dn88cf.svg"
               title="Centralized Control of All Construction Activities"
               desc="Manage multiple projects, workers, and resources from one unified platform. Gain complete visibility into every stage of construction."
             />
             <FeatureCard
-              image="/images/bin.svg"
+              image="https://res.cloudinary.com/depeqzb6z/image/upload/v1763210699/bin_wswhyj.svg"
               title="Reduced Material Wastage and Cost Overruns"
               desc="Track material usage and expenses accurately to prevent shortages, overstocking, and unnecessary spending."
             />
             <FeatureCard
-              image="/images/multiple-users-silhouette 1.svg"
+              image="https://res.cloudinary.com/depeqzb6z/image/upload/v1763210693/multiple-users-silhouette_1_zgma62.svg"
               title="Improved Staff Accountability and Efficiency"
               desc="Monitor attendance, task completion, and performance metrics to ensure every team member stays productive and responsible."
             />
             <FeatureCard
-              image="/images/presentation.svg"
+              image="https://res.cloudinary.com/depeqzb6z/image/upload/v1763210693/presentation_bl9ltw.svg"
               title="Accurate Project Performance Analytics"
               desc="Access detailed charts and KPIs that show progress, resource usage, and overall performance for smarter management decisions."
             />
             <FeatureCard
-              image="/images/insight 1.svg"
+              image="https://res.cloudinary.com/depeqzb6z/image/upload/v1763210701/insight_1_wdx9wt.svg"
               title="Faster Decision-Making Through Real-Time Insights"
               desc="Receive instant data updates from your sites, helping you address issues quickly and keep projects on schedule."
             />
             <FeatureCard
-              image="/images/promotion 1.svg"
+              image="https://res.cloudinary.com/depeqzb6z/image/upload/v1763210697/promotion_1_h6qjrq.svg"
               title="Easy Communication Between Site Workers and Management"
               desc="Enhance collaboration with built-in messaging and project update features that keep every team member informed and connected."
             />
@@ -267,7 +268,7 @@ function Hero() {
       <div
         className="relative min-h-screen lg:h-[90vh] flex items-center bg-center bg-no-repeat bg-cover"
         style={{
-          backgroundImage: "url(/images/bg-hero.png)",
+          backgroundImage: "url(https://res.cloudinary.com/depeqzb6z/image/upload/v1763210703/bg-hero_mvvqi1.png)",
         }}
       >
         {/* Angled dark overlay */}
@@ -278,7 +279,7 @@ function Hero() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 w-full  mx-auto px-6 md:px-10 py-20 lg:py-28">
+        <div className="relative z-10 w-full  mx-16 px-6 md:px-10 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 items-center gap-10">
             {/* Left Content */}
             <motion.div
@@ -287,29 +288,30 @@ function Hero() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center lg:text-left"
             >
-              <p className="text-lg sm:text-xl text-white font-bold">
+              <p className="text-[12px] top-30 sm:text-xl text-white font-bold">
                 Manage, Monitor and
               </p>
-              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white drop-shadow-sm">
-                Optimize Every Construction Project From One Dashboard
+              <h1 className="text-2xl sm:text-4xl md:text-3xl lg:text-4xl font-extrabold leading-tight text-white drop-shadow-sm">
+                Optimize <span className="text-[#001220]">Every Construction</span> <span className="text-[#022C4F]">Project From One Dashboard</span>
               </h1>
 
               <p className="mt-6 text-slate-200 text-base md:text-lg max-w-xl leading-relaxed mx-auto lg:mx-0">
-                A complete web solution for project control, staff management,
-                material tracking, and performance analytics — all designed to
-                simplify your construction operations.
+               A complete web solution for project control, staff management, 
+                material tracking, and performance analytics designed to simplify 
+                construction operations.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button
-                  className={`bg-black text-white px-8 sm:px-20 py-4 sm:py-5 rounded-md text-base sm:text-lg`}
+                  
+                  className={` hover:bg-[#022C4F] w-70 h-20 text-sm text-white px-2 sm:px-20 py-4 sm:py-5 rounded-md  bg-[#0F181F]  sm:text-lg`}
                 >
-                  Get Started
+                  <p className="text-[12px]"> Get Started</p>
                 </button>
                 <button
-                  className={`hover:bg-black border border-black text-white px-8 sm:px-20 py-4 sm:py-5 rounded-md text-base sm:text-lg`}
+                  className={`hover:bg-[#0F181F]   w-70 h-20 border border-[#0F181F] text-white px-8 sm:px-20 py-4 sm:py-5 rounded-md sm:text-lg`}
                 >
-                  Request a Demo
+                  <p className="text-[12px]">Request a Demo</p>
                 </button>
               </div>
             </motion.div>
@@ -358,22 +360,22 @@ function Steps() {
     {
       title: "Create an account",
       desc: "Register your company and add your projects.",
-      Image: "/images/user (2).svg",
+      Image: "https://res.cloudinary.com/depeqzb6z/image/upload/v1763210697/user_2_lklnai.svg",
     },
     {
       title: "Add your team",
       desc: "Assign roles for managers, engineers, and workers.",
-      Image: "/images/group-chat.svg",
+      Image: "https://res.cloudinary.com/depeqzb6z/image/upload/v1763210700/group-chat_opjikf.svg",
     },
     {
       title: "Track and monitor",
       desc: "Follow project progress, costs, and site activity in real time.",
-      Image: "/images/track.svg",
+      Image: "https://res.cloudinary.com/depeqzb6z/image/upload/v1763210696/track_kan7wj.svg",
     },
     {
       title: "Analyze and reports",
       desc: "Generate automated reports and performance summaries.",
-      Image: "/images/analyzing.svg",
+      Image: "https://res.cloudinary.com/depeqzb6z/image/upload/v1763210697/analyzing_qmkva8.svg",
     },
   ];
 
@@ -437,7 +439,7 @@ function Projects() {
       <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse md:flex-row gap-12 items-center">
         <div className="flex justify-center lg:justify-start">
           <Image
-            src="/images/Laptop-Screen-mockup 1.png"
+            src="https://res.cloudinary.com/depeqzb6z/image/upload/v1763210694/Laptop-Screen-mockup_1_wjlmmh.png"
             alt="laptop"
             width={700}
             height={500}
@@ -467,8 +469,8 @@ function Contact() {
     <section id="contact" className="relative -mt-40 z-10">
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="bg-slate-900 text-white overflow-hidden flex flex-col md:flex-row">
-          <div className="p-8 flex-1">
-            <h4 className="text-3xl sm:text-5xl font-semibold">Contact Us</h4>
+          <div className="p-16 flex-1">
+            <h4 className="text-4xl  sm:text-5xl font-bold">Contact Us</h4>
             <p className="text-slate-300 mt-2">Start building smarter today.</p>
 
             <form
@@ -516,23 +518,23 @@ function Contact() {
           >
             <div className="absolute right-0 top-0 w-35 h-full bg-[#D9D9D9] hidden md:block"></div>
             <div className="absolute bottom-0 left-0 w-full h-20 bg-[#D9D9D9] md:hidden"></div>
-            <div className="p-8 border-l md:border-l border-slate-800 h-fit w-4/5 md:w-full bg-[#022C4F] z-20 mx-auto md:ml-0">
+            <div className="p-8 border-l md:border-l border-slate-800 h-80 w-4/5 md:w-full bg-[#022C4F] z-20 mx-auto md:ml-0">
               {/* Small rectangle on right side */}
-              <div className="mb-4">
+              <div className="mb-8">
                 <h5 className="font-semibold text-xl">Info</h5>
               </div>
 
-              <div className="flex items-center gap-3 text-slate-300 mb-3">
-                <Mail className="w-7 h-7 text-slate-300" />
+              <div className="flex items-center gap-3 text-white mb-6">
+                <Mail className="w-7 h-7 text-white" />
                 <span>info@gmail.com</span>
               </div>
-              <div className="flex items-center gap-3 text-slate-300 mb-3">
-                <Phone className="w-7 h-7 text-slate-300" />
+              <div className="flex items-center gap-3 text-white mb-6">
+                <Phone className="w-7 h-7 text-white" />
                 <span>+234 0000 000</span>
               </div>
 
-              <div className="flex items-start gap-3 text-slate-300">
-                <MapPin className="w-7 h-7" />
+              <div className="flex items-start gap-3 text-white">
+                <MapPin className="w-7 h-7 text-white" />
                 <span>Lagos, Nigeria</span>
               </div>
             </div>

@@ -31,11 +31,11 @@ export default function Page() {
               alt="Site Supervise"
               className="mx-auto mb-6 w-28 h-auto"
             />
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-4 md:text-start text-center">
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-4 md:text-center text-center">
               SITE SUPERVISE
             </h1>
           </div>
-          <p className="text-xl md:text-xl max-w-lg mx-auto mt-auto md:text-start text-center">
+          <p className="text-xl md:text-xl max-w-lg mx-auto mt-auto md:text-center text-center">
             Manage, monitor, and analyze every construction project — all from
             one platform.
           </p>
