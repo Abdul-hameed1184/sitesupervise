@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api/v1/auth';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://sitesupervise-backend-12.onrender.com/api/v1/auth';
 
 interface AuthResponse {
   access_token: string;
@@ -140,18 +140,14 @@ class AuthService {
     });
   }
 
+  async resetPassword(token: string, password: string, password_confirm: string): Promise<{ message: string }> {
+    return await this.makeRequest('/reset-password/', {
+      method: 'POST',
+      body: JSON.stringify({ token, password, password_confirm }),
+    });
+  }
+
   async logout(): Promise<void> {
-    const refreshToken = this.getRefreshToken();
-    if (refreshToken) {
-      try {
-        await this.makeRequest('/logout/', {
-          method: 'POST',
-          body: JSON.stringify({ refresh_token: refreshToken }),
-        });
-      } catch (error) {
-        console.error('Logout error:', error);
-      }
-    }
     this.clearTokens();
   }
 
