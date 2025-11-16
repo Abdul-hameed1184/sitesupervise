@@ -133,7 +133,7 @@ class AuthService {
     throw new Error('Failed to refresh token');
   }
 
-  async forgotPassword(email: string): Promise<{ message: string }> {
+  async forgotPassword(email: string): Promise<{ message: string; email_sent?: boolean }> {
     return await this.makeRequest('/forgot-password/', {
       method: 'POST',
       body: JSON.stringify({ email }),
