@@ -18,7 +18,11 @@ export default function Page() {
 
     try {
       const response = await authService.forgotPassword(email);
-      setMessage("Password reset email sent successfully!");
+      if (response.email_sent === false) {
+        setError("Failed to send email. Please try again.");
+      } else {
+        setMessage(response.message || "Password reset email sent successfully!");
+      }
     } catch (error: any) {
       setError(error.message || "Failed to send reset email");
     } finally {
